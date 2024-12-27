@@ -50,14 +50,14 @@
 //-------------------DEFAULT SETTINGS------------------//
 
                         // use config.ini [ true / false ]
-#define USECONFIG true  // this will allow you to change these settings below via the admin webpage. \
+#define USECONFIG false  // this will allow you to change these settings below via the admin webpage. \
                         // if you want to permanently use the values below then set this to false.
 
 //create access point
 boolean startAP = true;
-String AP_SSID = "PS4_WEB_AP";
+String AP_SSID = "PiZero";
 String AP_PASS = "password";
-IPAddress Server_IP(10, 1, 1, 1);
+IPAddress Server_IP(7, 7, 7, 1);
 IPAddress Subnet_Mask(255, 255, 255, 0);
 
 //connect to wifi
@@ -745,6 +745,8 @@ void setup() {
     dnsServer.start(53, "*", Server_IP);
     //HWSerial.println("DNS server started");
     //HWSerial.println("DNS Server IP: " + Server_IP.toString());
+    pinMode(15, OUTPUT);
+    digitalWrite(15, HIGH);
   }
 
   if (connectWifi && WIFI_SSID.length() > 0 && WIFI_PASS.length() > 0) {
